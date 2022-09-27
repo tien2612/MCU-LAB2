@@ -748,3 +748,7 @@
 2022-09-27 09:26:53,985 [INFO] ProjectBuilder:2457 - Time for Copy CMSIS : 0mS.
 2022-09-27 09:28:33,024 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
 2022-09-27 09:28:38,925 [INFO] NvicIntPanel:96 - NVIC parent = com.st.microxplorer.plugins.ip.nvic.MultiNvicIntPanel[,0,0,0x0,invalid,layout=javax.swing.BoxLayout,alignmentX=0.0,alignmentY=0.0,border=,flags=9,maximumSize=,minimumSize=,preferredSize=]
+2022-09-27 09:39:33,172 [INFO] Activator:177 - 
+
+
+2022-09-27 09:39:33,173 [INFO] Activator:178 - !SESSION log4j initialized
