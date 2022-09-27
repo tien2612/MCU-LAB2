@@ -63,11 +63,18 @@ const int MAX_LED_MATRIX = 8;
 int index_led = 0;
 int index_led_matrix = 0;
 int led_buffer[4] = {1, 2, 3, 4};
-uint8_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
+uint16_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
 uint16_t character_A[8] = {0xffff, 0x03ff, 0xedff, 0xeeff, 0xeeff, 0xedff, 0x03ff, 0xffff};
-//uint16_t character_A[8] = {0xffff, 0xc0ff, 0xb7ff, 0x77ff, 0x77ff, 0xb7ff, 0xc0ff, 0xffff};
-//uint16_t character_A[8] = {0xffff, 0xc0ff, 0xb7ff, 0x77ff, 0x77ff, 0xb7ff, 0xc0ff, 0xffff};
-//uint16_t character_A[8] = {0xffff, 0xc0ff, 0xb7ff, 0x77ff, 0x77ff, 0xb7ff, 0xc0ff, 0xffff};
+uint16_t zero[8] = {0xffff, 0xc1ff, 0x80ff, 0xbaff, 0xb6ff, 0xaeff, 0x80ff, 0xc1ff};
+uint16_t one[8] = {0xffff, 0xbfff, 0xbfff, 0x80ff, 0x80ff, 0xbdff, 0xbfff, 0xffff};
+uint16_t two[8] = {0xffff, 0x99ff, 0x90ff, 0xb6ff, 0xa6ff, 0x8eff, 0x9cff, 0xbdff};
+uint16_t three[8] = {0xffff, 0xc9ff, 0x80ff, 0xb6ff, 0xb6ff, 0xb6ff, 0x9cff, 0xddff};
+uint16_t four[8] = {0xffff, 0xafff, 0x80ff, 0x80ff, 0xacff, 0xe9ff, 0xe3ff, 0xe7ff};
+uint16_t five[8] = {0xffff, 0xceff, 0x86ff, 0xb6ff, 0xb6ff, 0xb6ff, 0x90ff, 0xd0ff};
+uint16_t six[8] = {0xffff, 0xcfff, 0x87ff, 0xb6ff, 0xb6ff, 0xb4ff, 0x81ff, 0xc3ff};
+uint16_t seven[8] = {0xffff, 0xfcff, 0xf8ff, 0xf2ff, 0x86ff, 0x8eff, 0xfcff, 0xfcff};
+uint16_t eight[8] = {0xffff, 0xc9ff, 0x80ff, 0xb6ff, 0xb6ff, 0xb6ff, 0x80ff, 0xc9ff};
+uint16_t nine[8] = {0xffff, 0xe1ff, 0xc0ff, 0x96ff, 0xb6ff, 0xb6ff, 0xb0ff, 0xf9ff};
 
 int hour = 15, minute = 8, second = 50;
 
@@ -239,27 +246,71 @@ void update7SEG(int index){
 			break;
 	}
 }
-void updateLEDMatrix(int index){
-    switch (index){
-        case 0:
-            break;
-        case 1:
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        case 4:
-            break;
-        case 5:
-            break;
-        case 6:
-            break;
-        case 7:
-            break;
-        default:
-            break;
-    }
+  void updateLEDMatrix(int index){
+      switch (index){
+          case 0:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = zero[i];
+          	}
+              break;
+          case 1:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = one[i];
+          	}
+              break;
+          case 2:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = two[i];
+          	}
+              break;
+          case 3:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = three[i];
+          	}
+              break;
+          case 4:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = four[i];
+          	}
+              break;
+          case 5:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = five[i];
+          	}
+              break;
+          case 6:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = six[i];
+          	}
+              break;
+          case 7:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = seven[i];
+          	}
+              break;
+          case 8:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = eight[i];
+          	}
+          	break;
+          case 9:
+          	for (int i = 0; i < 8; i++) {
+          		matrix_buffer[i] = nine[i];
+          	}
+          	break;
+          default:
+        	  for (int i = 0; i < 8; i++) {
+        		  matrix_buffer[i] = character_A[i];
+        	  }
+              break;
+      }
+  }
+void shift_left(uint16_t array[8]) {
+	uint16_t temp = array[7];
+	for (int j = 7; j >= 0; j--) {
+		array[j] = array[j - 1];
+	}
+	array[0] = temp;
 }
 /* USER CODE END 0 */
 
@@ -299,15 +350,17 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(2);
   setTimer2(3);
-  setTimer3(7);
-  setTimer4(1);
+  setTimer3(5);
+  setTimer4(7);
+  setTimer5(11);
   int i = -1;
+  int index_buffer = 0;
   while (1)
   {
 	  if (timer1_flag == 1) {
 		  // Switching 4 LEDs 7 SEG half of second
 		  setTimer1(100);
-		  if (index_led >= 4) index_led = 0;
+		  if (index_led >= MAX_LED) index_led = 0;
 		  update7SEG(index_led++);
 
 	  }
@@ -337,11 +390,23 @@ int main(void)
 		 // UPDATE MATRIX LED
 		  setTimer4(1);
 		  i++;
-		  if (i >= 8) i = 0;
+		  if (i >= MAX_LED_MATRIX) i = 0;
 		  GPIOA->ODR = ~0x8000 >> i;
-		  GPIOB->ODR = character_A[i];
+		  GPIOB->ODR = matrix_buffer[i];
+		  HAL_Delay(1);
 
 	  }
+	  if (timer5_flag == 1) {
+		  // SHIFT CHARACTER TO LEFT
+		  setTimer5(50);
+//		  shift_left(character_A);
+		  if (index_buffer >= 11) index_buffer = 0;
+		  updateLEDMatrix(index_buffer);
+		  index_buffer++;
+	  }
+
+//		  shift_left(character_A);
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -403,7 +468,7 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 7999;
+  htim2.Init.Prescaler = 799;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
