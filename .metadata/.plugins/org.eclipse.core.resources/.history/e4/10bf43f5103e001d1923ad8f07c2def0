@@ -271,27 +271,11 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(2);
   setTimer2(3);
-  setTimer3(7);
   while (1)
   {
 	  if (timer1_flag == 1) {
-		  // Switching 4 LEDs 7 SEG half of second
+		  // switching 4 LEDs 7 SEG half of second
 		  setTimer1(100);
-		  if (index_led >= 4) index_led = 0;
-		  update7SEG(index_led++);
-
-	  }
-
-	  if (timer2_flag == 1) {
-		  // Blinking PA5 LED and DOT LED every second
-		  setTimer2(100);
-		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
-		  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);
-	  }
-
-	  if (timer3_flag == 1) {
-		  // UPDATE CLOCK BUFFER
-		  setTimer3(100);
 		  second++;
 		  if (second >= 60){
 			  second = 0;
@@ -305,6 +289,16 @@ int main(void)
 			  hour = 0;
 		  }
 		  updateClockBuffer();
+		  if (index_led >= 4) index_led = 0;
+		  update7SEG(index_led++);
+
+	  }
+
+	  if (timer2_flag == 1) {
+		  // blinking PA5 LED and DOT LED every second
+		  setTimer2(100);
+		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
+		  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);
 	  }
     /* USER CODE END WHILE */
 
