@@ -739,8 +739,8 @@ int main(void)
  80005e2:	2b01      	cmp	r3, #1
  80005e4:	d111      	bne.n	800060a <main+0x52>
 		  // switching 4 LEDs 7 SEG half of second
-		  setTimer1(50);
- 80005e6:	2032      	movs	r0, #50	; 0x32
+		  setTimer1(100);
+ 80005e6:	2064      	movs	r0, #100	; 0x64
  80005e8:	f000 f914 	bl	8000814 <setTimer1>
 		  if (index_led >= 4) index_led = 0;
  80005ec:	4b11      	ldr	r3, [pc, #68]	; (8000634 <main+0x7c>)
