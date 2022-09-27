@@ -63,8 +63,7 @@ const int MAX_LED_MATRIX = 8;
 int index_led = 0;
 int index_led_matrix = 0;
 int led_buffer[4] = {1, 2, 3, 4};
-uint16_t matrix_buffer[8] = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08};
-uint16_t character_A[8] = {0xffff, 0x03ff, 0xedff, 0xeeff, 0xeeff, 0xedff, 0x03ff, 0xffff};
+uint16_t matrix_buffer[8] = {0xffff, 0x03ff, 0xedff, 0xeeff, 0xeeff, 0xedff, 0x03ff, 0xffff};
 uint16_t zero[8] = {0xffff, 0xc1ff, 0x80ff, 0xbaff, 0xb6ff, 0xaeff, 0x80ff, 0xc1ff};
 uint16_t one[8] = {0xffff, 0xbfff, 0xbfff, 0x80ff, 0x80ff, 0xbdff, 0xbfff, 0xffff};
 uint16_t two[8] = {0xffff, 0x99ff, 0x90ff, 0xb6ff, 0xa6ff, 0x8eff, 0x9cff, 0xbdff};
@@ -298,11 +297,9 @@ void update7SEG(int index){
           		matrix_buffer[i] = nine[i];
           	}
           	break;
+
           default:
-        	  for (int i = 0; i < 8; i++) {
-        		  matrix_buffer[i] = character_A[i];
-        	  }
-              break;
+        	  break;
       }
   }
 void shift_left(uint16_t array[8]) {
@@ -354,7 +351,7 @@ int main(void)
   setTimer4(7);
   setTimer5(11);
   int i = -1;
-  int index_buffer = 0;
+//  int index_buffer = 0;
   while (1)
   {
 	  if (timer1_flag == 1) {
@@ -386,6 +383,7 @@ int main(void)
 		  }
 		  updateClockBuffer();
 	  }
+
 	  if (timer4_flag == 1) {
 		 // UPDATE MATRIX LED
 		  setTimer4(1);
@@ -394,18 +392,13 @@ int main(void)
 		  GPIOA->ODR = ~0x8000 >> i;
 		  GPIOB->ODR = matrix_buffer[i];
 		  HAL_Delay(1);
-
 	  }
+
 	  if (timer5_flag == 1) {
-		  // SHIFT CHARACTER TO LEFT
+		  // SHIFT CHARACTER TO LEFT-SIDE
 		  setTimer5(50);
-//		  shift_left(character_A);
-		  if (index_buffer >= 11) index_buffer = 0;
-		  updateLEDMatrix(index_buffer);
-		  index_buffer++;
+		  shift_left(matrix_buffer);
 	  }
-
-//		  shift_left(character_A);
 
     /* USER CODE END WHILE */
 
