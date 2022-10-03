@@ -303,8 +303,8 @@ void update7SEG(int index){
   }
 void shift_left(uint16_t array[8]) {
 	uint16_t temp = array[7];
-	for (int j = 7; j >= 0; j--) {
-		array[j] = array[j - 1];
+	for (int i = 7; i > 0; i--) {
+		array[i] = array[i - 1];
 	}
 	array[0] = temp;
 }
@@ -344,52 +344,21 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  setTimer1(2);
-  setTimer2(3);
-  setTimer3(5);
-  setTimer4(7);
-  setTimer5(11);
   int i = -1;
+  setTimer1(2);
   while (1)
   {
 	  if (timer1_flag == 1) {
-		  // Switching 4 LEDs 7 SEG half of second
-		  setTimer1(100);
-		  if (index_led >= MAX_LED) index_led = 0;
-		  update7SEG(index_led++);
+		 // Display character 'A'
 
-	  }
-	  if (timer2_flag == 1) {
-		  // Blinking PA5 LED and DOT LED every second
-		  setTimer2(100);
-		  HAL_GPIO_TogglePin(GPIOA, DOT_Pin);
-		  HAL_GPIO_TogglePin(GPIOA, LED_RED_Pin);	  }
-	  if (timer3_flag == 1) {
-		  // UPDATE CLOCK BUFFER
-		  setTimer3(100);
-		  second++;
-		  if (second >= 60){
-			  second = 0;
-			  minute++;
-		  }
-		  if(minute >= 60){
-			  minute = 0;
-			  hour++;
-		  }
-		  if(hour >=24){
-			  hour = 0;
-		  }
-		  updateClockBuffer();
-	  }
-	  if (timer4_flag == 1) {
-		 // UPDATE MATRIX LED
-		  setTimer4(1);
+		  setTimer1(1);
 		  i++;
-		  if (i >= MAX_LED_MATRIX) i = 0;
+		  if (i >= MAX_LED_MATRIX) {
+			  i = 0;
+
+		  }
 		  GPIOA->ODR = ~0x8000 >> i;
 		  GPIOB->ODR = matrix_buffer[i];
-		  HAL_Delay(1);
-
 	  }
 
     /* USER CODE END WHILE */
@@ -533,7 +502,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+int dem = 10;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
 }

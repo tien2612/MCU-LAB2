@@ -245,3 +245,33 @@ org.eclipse.equinox.p2.core.ProvisionException: No repository found at https://s
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:78)
 !SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2022-09-27 17:09:23.749
 !MESSAGE No repository found at https://sw-center.st.com/stm32cubeide/eclipse.
+!SESSION 2022-10-02 22:10:41.841 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-10-02 22:11:29.627
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-10-02 22:11:29.702
+!MESSAGE Log4j initialized with config file C:\Users\nguye\Documents\GitHub\MCU-LAB2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-02 22:11:37.122
+!MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-10-03 10:34:04.672 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-10-03 10:34:19.475
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-10-03 10:34:19.565
+!MESSAGE Log4j initialized with config file C:\Users\nguye\Documents\GitHub\MCU-LAB2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-03 10:34:28.352
+!MESSAGE Started RMI Server, listening on port 41337
