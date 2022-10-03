@@ -275,3 +275,18 @@ Command-line arguments:  -os win32 -ws win32 -arch x86_64
 
 !ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-03 10:34:28.352
 !MESSAGE Started RMI Server, listening on port 41337
+!SESSION 2022-10-03 11:48:32.724 -----------------------------------------------
+eclipse.buildId=Version 1.7.0
+java.version=11.0.10
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2022-10-03 11:48:45.158
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2022-10-03 11:48:45.226
+!MESSAGE Log4j initialized with config file C:\Users\nguye\Documents\GitHub\MCU-LAB2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2022-10-03 11:48:51.705
+!MESSAGE Started RMI Server, listening on port 41337
