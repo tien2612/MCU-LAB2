@@ -361,11 +361,11 @@ int main(void)
 		  GPIOB->ODR = matrix_buffer[i];
 	  }
 
-	  if (timer2_flag == 1) {
-		  // Scroll 'A' in the left direction
-		  setTimer2(100);
-		  shift_left(matrix_buffer);
-	  }
+//	  if (timer2_flag == 1) {
+//		  // Scroll 'A' in the left direction
+//		  setTimer2(40);
+//		  shift_left(matrix_buffer);
+//	  }
 
     /* USER CODE END WHILE */
 

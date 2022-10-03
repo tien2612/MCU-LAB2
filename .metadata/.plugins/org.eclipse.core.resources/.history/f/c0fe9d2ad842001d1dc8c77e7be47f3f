@@ -354,16 +354,14 @@ int main(void)
 		 // UPDATE MATRIX LED
 		  setTimer1(1);
 		  i++;
-		  if (i >= MAX_LED_MATRIX) {
-			  i = 0;
-		  }
+		  if (i >= MAX_LED_MATRIX) i = 0;
 		  GPIOA->ODR = ~0x8000 >> i;
 		  GPIOB->ODR = matrix_buffer[i];
 	  }
 
 	  if (timer2_flag == 1) {
 		  // Scroll 'A' in the left direction
-		  setTimer2(100);
+		  setTimer2(40);
 		  shift_left(matrix_buffer);
 	  }
 

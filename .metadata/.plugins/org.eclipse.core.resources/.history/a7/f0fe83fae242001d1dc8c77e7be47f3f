@@ -348,6 +348,7 @@ int main(void)
   setTimer1(2);
   setTimer2(3);
   int i = -1;
+  int j = 0;
   while (1)
   {
 	  if (timer1_flag == 1) {
@@ -365,6 +366,7 @@ int main(void)
 		  // Scroll 'A' in the left direction
 		  setTimer2(100);
 		  shift_left(matrix_buffer);
+
 	  }
 
     /* USER CODE END WHILE */

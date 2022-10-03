@@ -363,7 +363,7 @@ int main(void)
 
 	  if (timer2_flag == 1) {
 		  // Scroll 'A' in the left direction
-		  setTimer2(100);
+		  setTimer2(32);
 		  shift_left(matrix_buffer);
 	  }
 
