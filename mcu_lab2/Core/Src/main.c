@@ -275,8 +275,8 @@ int main(void)
   while (1)
   {
 	  if (timer1_flag == 1) {
-		  // Switching 4 LEDs 7 SEG half of second
-		  setTimer1(100);
+		  // Switching 4 LEDs 7 SEG
+		  setTimer1(25);
 		  if (index_led >= 4) index_led = 0;
 		  update7SEG(index_led++);
 

@@ -843,9 +843,9 @@ int main(void)
  8000696:	681b      	ldr	r3, [r3, #0]
  8000698:	2b01      	cmp	r3, #1
  800069a:	d111      	bne.n	80006c0 <main+0x58>
-		  // switching 4 LEDs 7 SEG half of second
-		  setTimer1(100);
- 800069c:	2064      	movs	r0, #100	; 0x64
+		  // Switching 4 LEDs 7 SEG
+		  setTimer1(25);
+ 800069c:	2019      	movs	r0, #25
  800069e:	f000 f949 	bl	8000934 <setTimer1>
 		  if (index_led >= 4) index_led = 0;
  80006a2:	4b28      	ldr	r3, [pc, #160]	; (8000744 <main+0xdc>)
@@ -871,7 +871,7 @@ int main(void)
  80006c2:	681b      	ldr	r3, [r3, #0]
  80006c4:	2b01      	cmp	r3, #1
  80006c6:	d10a      	bne.n	80006de <main+0x76>
-		  // blinking PA5 LED and DOT LED every second
+		  // Blinking PA5 LED and DOT LED every second
 		  setTimer2(100);
  80006c8:	2064      	movs	r0, #100	; 0x64
  80006ca:	f000 f947 	bl	800095c <setTimer2>
@@ -890,6 +890,7 @@ int main(void)
  80006e0:	681b      	ldr	r3, [r3, #0]
  80006e2:	2b01      	cmp	r3, #1
  80006e4:	d1d6      	bne.n	8000694 <main+0x2c>
+		  // UPDATE CLOCK BUFFER
 		  setTimer3(100);
  80006e6:	2064      	movs	r0, #100	; 0x64
  80006e8:	f000 f94c 	bl	8000984 <setTimer3>
